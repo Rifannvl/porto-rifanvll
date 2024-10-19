@@ -1,4 +1,4 @@
-"use client";;
+"use client";
 import React, { useEffect, useRef, useState } from "react";
 import {
   motion,
@@ -17,22 +17,14 @@ export const wrap = (min, max, v) => {
   return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
 };
 
-export function VelocityScroll({
-  text,
-  default_velocity = 5,
-  className
-}) {
-  function ParallaxText({
-    children,
-    baseVelocity = 100,
-    className
-  }) {
+export function VelocityScroll({ text, default_velocity = 10, className }) {
+  function ParallaxText({ children, baseVelocity = 100, className }) {
     const baseX = useMotionValue(0);
     const { scrollY } = useScroll();
     const scrollVelocity = useVelocity(scrollY);
     const smoothVelocity = useSpring(scrollVelocity, {
       damping: 50,
-      stiffness: 400,
+      stiffness: 300,
     });
 
     const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
@@ -77,7 +69,10 @@ export function VelocityScroll({
     });
 
     return (
-      (<div className="w-full overflow-hidden whitespace-nowrap" ref={containerRef}>
+      <div
+        className="w-full overflow-hidden whitespace-nowrap"
+        ref={containerRef}
+      >
         <motion.div className={cn("inline-block", className)} style={{ x }}>
           {Array.from({ length: repetitions }).map((_, i) => (
             <span key={i} ref={i === 0 ? textRef : null}>
@@ -85,18 +80,18 @@ export function VelocityScroll({
             </span>
           ))}
         </motion.div>
-      </div>)
+      </div>
     );
   }
 
   return (
-    (<section className="relative w-full">
+    <section className="relative w-full">
       <ParallaxText baseVelocity={default_velocity} className={className}>
         {text}
       </ParallaxText>
       <ParallaxText baseVelocity={-default_velocity} className={className}>
         {text}
       </ParallaxText>
-    </section>)
+    </section>
   );
 }
