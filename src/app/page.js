@@ -4,18 +4,19 @@ import Image from "next/image";
 import avatar from "@/assets/avatardemo.png";
 import GradualSpacing from "@/components/ui/gradual-spacing";
 import BlurFade from "@/components/ui/blur-fade";
-import Meteors from "@/components/ui/meteors";
 import { VelocityScroll } from "@/components/ui/scroll-based-velocity";
 import TextRevealByWord from "@/components/ui/text-reveal";
 import DockMenus from "@/components/ui/DockMenus";
 import { cn } from "@/lib/utils";
 import { CardHover } from "@/components/ui/CardHover";
 import { ThreeDCardDemo } from "@/components/ui/TriDCard";
+import { ExpandableCard } from "@/components/ui/ExpanCard";
 
 export default function Home() {
   return (
     <div>
       <HeroSection />
+
       <BlurFade>
         <VelocityScroll
           text={"web developer "}
@@ -23,7 +24,7 @@ export default function Home() {
           className="font-display text-center text-2xl font-bold tracking-[-0.02em] text-black drop-shadow-sm dark:text-white md:text-5xl md:leading-[4rem] "
         />
       </BlurFade>
-      <div className="z-10 flex  items-center justify-center bg-white dark:bg-black">
+      <div className="z-10 flex container items-center justify-center bg-white dark:bg-black">
         <TextRevealByWord
           text="Hi! I’m a frontend developer who loves building clean,
                 responsive, and user-friendly web interfaces. I enjoy working
@@ -42,7 +43,9 @@ export default function Home() {
 
       <DockMenus className="fixed bottom-12 left-1/2 -translate-x-1/2 z-50" />
 
-      <ThreeDCardDemo />
+      {/* <ThreeDCardDemo /> */}
+
+      <ExpandableCard />
 
       <GridPattern
         width={20}
@@ -78,7 +81,7 @@ export default function Home() {
               text="Rifan Afendi"
               duration={0.75}
             />
-            <ul className="list-disc pl-2 flex flex-wrap">
+            <ul className="list-disc pl-2 flex ms-7 flex-wrap">
               <BlurFade>
                 <li className="mr-8 mb-1 text-sm md:text-base">
                   Web Developer
