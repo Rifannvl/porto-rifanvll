@@ -1,29 +1,52 @@
-import { HoverEffect } from "./card-hover-effect";
-import Image from "next/image";
-import avatar from "@/assets/avatardemo.png";
-import Link from "next/link";
+import { HoverEffect } from "@/components/ui/card-hover-effect";
+import { Target } from "lucide-react";
 
 export function CardHover() {
   return (
-    <div className="max-w-5xl mx-auto px-8">
+    <div className="max-w-6xl mx-auto px-8">
+      <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300 bg-clip-text text-center text-6xl font-semibold leading-none text-transparent dark:from-white dark:to-black">
+        My Skill
+      </span>
       <HoverEffect items={projects} />
     </div>
   );
 }
 export const projects = [
-  {},
   {
-    image:
-      "https://my-portofolio-web-bay.vercel.app/assets/profile-br77KJ1I.svg",
-    title: "Netflix",
-    description:
-      "A streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.",
-    link: "https://netflix.com",
+    title: "React Js",
+    image: "https://img.icons8.com/?size=200&id=123603&format=png&color=000000",
+    link: "https://react.dev",
   },
   {
-    title: "Google",
-    description:
-      "A multinational technology company that specializes in Internet-related services and products.",
-    link: "https://google.com",
+    title: "Next Js",
+    image:
+      "https://img.icons8.com/?size=200&id=MWiBjkuHeMVq&format=png&color=000000",
+    link: "https://nextjs.org",
+  },
+  {
+    title: "Tailwind",
+    image:
+      "https://img.icons8.com/?size=200&id=CIAZz2CYc6Kc&format=png&color=000000",
+    link: "https://tailwindcss.com",
+  },
+  {
+    title: "Bootstrap",
+    image:
+      "https://img.icons8.com/?size=200&id=EzPCiQUqWWEa&format=png&color=000000",
+
+    link: "https://getbootstrap.com",
+  },
+  {
+    title: "Javascript",
+    image:
+      "https://img.icons8.com/?size=200&id=PXTY4q2Sq2lG&format=png&color=000000",
+
+    link: "https://www.w3schools.com/js/",
+  },
+  {
+    title: "Html",
+    image: "https://img.icons8.com/?size=200&id=20909&format=png&color=000000",
+
+    link: "https://www.w3schools.com/html/",
   },
 ];
