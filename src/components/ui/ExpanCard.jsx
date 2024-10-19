@@ -12,6 +12,8 @@ import { useOutsideClick } from "@/components/blocks/hooks/use-outside-click";
 
 export function ExpandableCard() {
   const [active, setActive] = useState(null);
+  const [visibleCount, setVisibleCount] = useState(3); // Jumlah kartu awal
+  const [showMore, setShowMore] = useState(false); // State untuk menampilkan kartu tambahan
   const id = useId();
   const ref = useRef(null);
 
@@ -34,6 +36,10 @@ export function ExpandableCard() {
 
   useOutsideClick(ref, () => setActive(null));
 
+  const handleToggleShowMore = () => {
+    setShowMore((prev) => !prev); // Toggle state untuk menampilkan kartu tambahan
+  };
+
   return (
     <div className="container">
       <AnimatePresence>
@@ -48,22 +54,13 @@ export function ExpandableCard() {
       </AnimatePresence>
       <AnimatePresence>
         {active && typeof active === "object" ? (
-          <div className="fixed inset-0  grid place-items-center z-[100]">
+          <div className="fixed inset-0 grid place-items-center z-[100]">
             <motion.button
               key={`button-${active.title}-${id}`}
               layout
-              initial={{
-                opacity: 0,
-              }}
-              animate={{
-                opacity: 1,
-              }}
-              exit={{
-                opacity: 0,
-                transition: {
-                  duration: 0.05,
-                },
-              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0, transition: { duration: 0.05 } }}
               className="flex absolute top-2 right-2 lg:hidden items-center justify-center bg-white rounded-full h-6 w-6"
               onClick={() => setActive(null)}
             >
@@ -72,7 +69,7 @@ export function ExpandableCard() {
             <motion.div
               layoutId={`card-${active.title}-${id}`}
               ref={ref}
-              className="w-full max-w-[500px]  h-full md:h-fit md:max-h-[90%]  flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
+              className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
             >
               <motion.div layoutId={`image-${active.title}-${id}`}>
                 <Image
@@ -147,41 +144,51 @@ export function ExpandableCard() {
         </ul>
       </div>
       <ul className="max-w-8xl mx-auto w-full grid grid-cols-1 md:grid-cols-3 items-start gap-4">
-        {cards.map((card, index) => (
-          <motion.div
-            layoutId={`card-${card.title}-${id}`}
-            key={card.title}
-            onClick={() => setActive(card)}
-            className="p-4  flex flex-col  hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-xl cursor-pointer"
-          >
-            <div className="flex gap-4 flex-col  w-full">
-              <motion.div layoutId={`image-${card.title}-${id}`}>
-                <Image
-                  width={100}
-                  height={100}
-                  src={card.src}
-                  alt={card.title}
-                  className="h-60 w-full  rounded-lg object-cover object-top"
-                />
-              </motion.div>
-              <div className="flex justify-center items-center flex-col">
-                <motion.h3
-                  layoutId={`title-${card.title}-${id}`}
-                  className="font-bold text-neutral-800 dark:text-neutral-200 text-center md:text-left text-base"
-                >
-                  {card.title}
-                </motion.h3>
-                <motion.p
-                  layoutId={`description-${card.description}-${id}`}
-                  className="text-neutral-600 dark:text-neutral-400 text-center md:text-left text-base"
-                >
-                  {card.description}
-                </motion.p>
+        {cards
+          .slice(0, showMore ? cards.length : visibleCount)
+          .map((card, index) => (
+            <motion.div
+              layoutId={`card-${card.title}-${id}`}
+              key={card.title}
+              onClick={() => setActive(card)}
+              className="p-4 flex flex-col hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-xl cursor-pointer"
+            >
+              <div className="flex gap-4 flex-col w-full">
+                <motion.div layoutId={`image-${card.title}-${id}`}>
+                  <Image
+                    width={100}
+                    height={100}
+                    src={card.src}
+                    alt={card.title}
+                    className="h-60 w-full rounded-lg object-cover object-top"
+                  />
+                </motion.div>
+                <div className="flex justify-center items-center flex-col">
+                  <motion.h3
+                    layoutId={`title-${card.title}-${id}`}
+                    className="font-bold text-neutral-800 dark:text-neutral-200 text-center md:text-left text-base"
+                  >
+                    {card.title}
+                  </motion.h3>
+                  <motion.p
+                    layoutId={`description-${card.description}-${id}`}
+                    className="text-neutral-600 dark:text-neutral-400 text-center md:text-left text-base"
+                  >
+                    {card.description}
+                  </motion.p>
+                </div>
               </div>
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          ))}
       </ul>
+      <div className="flex justify-end">
+        <button
+          onClick={handleToggleShowMore}
+          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+        >
+          {showMore ? "Tutup Tabnya" : "Lihat Berikutnya"}
+        </button>
+      </div>
     </div>
   );
 }
@@ -189,18 +196,9 @@ export function ExpandableCard() {
 export const CloseIcon = () => {
   return (
     <motion.svg
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 1,
-      }}
-      exit={{
-        opacity: 0,
-        transition: {
-          duration: 0.05,
-        },
-      }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, transition: { duration: 0.05 } }}
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
@@ -222,18 +220,13 @@ export const CloseIcon = () => {
 const cards = [
   {
     description: "01-08-2024",
-    title: " Ecommerce(project mandiri)",
+    title: "Ecommerce (project mandiri)",
     src: Ecmrs,
     ctaText: "Visit",
     ctaLink: "https://e-commerce-navy-xi.vercel.app",
-    content: () => {
-      return (
-        <p>
-          Ecommerce app project mandiri sebagai tugas akhir yang dilaksanan di
-          neuversity
-        </p>
-      );
-    },
+    content: () => (
+      <p>Ecommerce app project mandiri sebagai tugas akhir di neuversity</p>
+    ),
   },
   {
     description: "01-09-2024",
@@ -241,29 +234,22 @@ const cards = [
     src: Travel,
     ctaText: "Visit",
     ctaLink: "https://web-travel-nine.vercel.app",
-    content: () => {
-      return <p>membuat web travel sebagai tugas akhir di neuversity</p>;
-    },
+    content: () => <p>Membuat web travel sebagai tugas akhir di neuversity</p>,
   },
-
   {
-    description: "01-06-2024",
+    description: "01-04-2024",
     title: "Smk Negeri 1 Simra",
     src: Smk,
     ctaText: "Visit",
     ctaLink: "https://smkn1-simpangraya.vercel.app",
-    content: () => {
-      return <p>membuat web smk negeri 1 simpang raya</p>;
-    },
+    content: () => <p>Membuat web SMK Negeri 1 Simpang Raya</p>,
   },
   {
     description: "01-06-2024",
-    title: "Yowis Coffe",
+    title: "Yowis Coffee",
     src: Yws,
     ctaText: "Visit",
     ctaLink: "https://yowis-coffe.vercel.app",
-    content: () => {
-      return <p>membuat web untuk caffe yowes coffe</p>;
-    },
+    content: () => <p>Membuat web untuk cafe Yowis Coffee</p>,
   },
 ];
