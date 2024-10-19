@@ -9,7 +9,8 @@ import TextRevealByWord from "@/components/ui/text-reveal";
 import DockMenus from "@/components/ui/DockMenus";
 import { cn } from "@/lib/utils";
 import { ExpandableCard } from "@/components/ui/ExpanCard";
-import { OrbitingCirclesDemo } from "@/components/ui/OrbitingCirlcle";
+
+import { CardHover } from "@/components/ui/CardHover";
 
 export default function Home() {
   return (
@@ -40,10 +41,11 @@ export default function Home() {
         />
       </div>
 
+      <CardHover />
+
       <DockMenus className="fixed bottom-12 left-1/2 -translate-x-1/2 z-50" />
 
       <ExpandableCard />
-      <OrbitingCirclesDemo />
 
       <GridPattern
         width={20}
