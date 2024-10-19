@@ -8,8 +8,6 @@ import { VelocityScroll } from "@/components/ui/scroll-based-velocity";
 import TextRevealByWord from "@/components/ui/text-reveal";
 import DockMenus from "@/components/ui/DockMenus";
 import { cn } from "@/lib/utils";
-import { CardHover } from "@/components/ui/CardHover";
-import { ThreeDCardDemo } from "@/components/ui/TriDCard";
 import { ExpandableCard } from "@/components/ui/ExpanCard";
 
 export default function Home() {
@@ -42,8 +40,6 @@ export default function Home() {
       </div>
 
       <DockMenus className="fixed bottom-12 left-1/2 -translate-x-1/2 z-50" />
-
-      {/* <ThreeDCardDemo /> */}
 
       <ExpandableCard />
 
