@@ -19,14 +19,15 @@ export const HoverEffect = ({ items, className }) => {
         <Link
           href={item?.link}
           key={item?.link}
-          className="relative group  block p-2 h-full w-full"
+          target="_blank"
+          className="relative group  block p-2 h-full w-full "
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
           <AnimatePresence>
             {hoveredIndex === idx && (
               <motion.span
-                className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.8] block  rounded-3xl"
+                className="absolute inset-0 h-full w-full bg-neutral-900 dark:bg-slate-800/[0.8] block  rounded-3xl"
                 layoutId="hoverBackground"
                 initial={{ opacity: 0 }}
                 animate={{
@@ -40,7 +41,7 @@ export const HoverEffect = ({ items, className }) => {
               />
             )}
           </AnimatePresence>
-          <Card>
+          <Card className="">
             <CardTitle>{item.title}</CardTitle>
             <CardDescription>{item.description}</CardDescription>
             <CardImage>{item.image}</CardImage>
@@ -55,7 +56,7 @@ export const Card = ({ className, children }) => {
   return (
     <div
       className={cn(
-        "rounded-2xl h-full w-full p-4 overflow-hidden border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20",
+        "rounded-2xl h-full w-full p-4 overflow-hidden border border-transparent backdrop-blur-lg bg-neutral-900 opacity-60 hover:opacity-100 dark:bg-black/30 dark:border-white/[0.2] group-hover:border-slate-700 relative z-20",
         className
       )}
     >
@@ -84,12 +85,15 @@ export const CardDescription = ({ className, children }) => {
     </p>
   );
 };
-export const CardImage = ({ className, children }) => {
+
+export const CardImage = ({ className, src, alt, children }) => {
   return (
-    <img
-      className={cn()}
-      src="https://my-portofolio-web-bay.vercel.app/assets/profile-br77KJ1I.svg"
-      alt=""
-    />
+    <div className={cn("flex justify-center items-center")}>
+      <img
+        className={cn("max-w-full h-auto", className)} // Tambahkan kelas untuk responsif
+        src={children} // Menggunakan prop src
+        alt={alt} // Menggunakan prop alt
+      />
+    </div>
   );
 };
