@@ -9,6 +9,7 @@ import TextRevealByWord from "@/components/ui/text-reveal";
 import DockMenus from "@/components/ui/DockMenus";
 import { cn } from "@/lib/utils";
 import { ExpandableCard } from "@/components/ui/ExpanCard";
+import { OrbitingCirclesDemo } from "@/components/ui/OrbitingCirlcle";
 
 export default function Home() {
   return (
@@ -19,7 +20,7 @@ export default function Home() {
         <VelocityScroll
           text={"web developer "}
           default_velocity={3}
-          className="font-display text-center text-2xl font-bold tracking-[-0.02em] text-black drop-shadow-sm dark:text-white md:text-5xl md:leading-[4rem] "
+          className="font-display- text-center text-4xl font-bold tracking-[-0.02em] text-black drop-shadow-sm dark:text-white md:text-7xl md:leading-[4rem] "
         />
       </BlurFade>
       <div className="z-10 flex container items-center justify-center bg-white dark:bg-black">
@@ -42,6 +43,7 @@ export default function Home() {
       <DockMenus className="fixed bottom-12 left-1/2 -translate-x-1/2 z-50" />
 
       <ExpandableCard />
+      <OrbitingCirclesDemo />
 
       <GridPattern
         width={20}
