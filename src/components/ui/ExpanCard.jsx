@@ -41,7 +41,7 @@ export function ExpandableCard() {
   };
 
   return (
-    <div className="container">
+    <div className="">
       <AnimatePresence>
         {active && typeof active === "object" && (
           <motion.div
@@ -130,20 +130,20 @@ export function ExpandableCard() {
         ) : null}
       </AnimatePresence>
       <div>
-        <GradualSpacing
-          className="font-display mb-2 mt-5 lg:mb-4 text-xl sm:text-3xl font-bold -tracking-widest text-center text-neutral-700 dark:text-white md:text-3xl lg:text-5xl"
-          text="Project Rifan"
-          duration={0.75}
-        />
         <ul className="list-disc pl-2 flex flex-wrap">
           <BlurFade>
-            <li className="ms-8 mb-1 text-sm md:text-base">
-              Showcasing some my completed projects
-            </li>
+            <div className=" mb-2 mt-5">
+              <h2 className="lg:text-5xl lg:mb-4 text-xl sm:text-3xl dark:text-white md:text-3xl font-bold text-neutral-700">
+                Project Rifan
+              </h2>
+              <li className="ms-8 mb-1 text-sm md:text-base">
+                Showcasing some my completed projects
+              </li>
+            </div>
           </BlurFade>
         </ul>
       </div>
-      <ul className="max-w-8xl mx-auto w-full grid grid-cols-1 md:grid-cols-3 items-start gap-4">
+      <ul className="max-w-8xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-start gap-4">
         {cards
           .slice(0, showMore ? cards.length : visibleCount)
           .map((card, index) => (
@@ -186,7 +186,7 @@ export function ExpandableCard() {
           onClick={handleToggleShowMore}
           className="px-4 py-2 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200"
         >
-          {showMore ? "Tutup Tabnya" : "Lihat Berikutnya"}
+          {showMore ? "Lihat Lebih Sedikit" : "Lihat Berikutnya"}
         </button>
       </div>
     </div>
