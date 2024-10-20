@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
+import GridPattern from "./grid-pattern";
 
 export const HoverEffect = ({ items, className }) => {
   let [hoveredIndex, setHoveredIndex] = useState(null);
@@ -44,7 +45,16 @@ export const HoverEffect = ({ items, className }) => {
           <Card className="">
             <CardTitle>{item.title}</CardTitle>
             <CardDescription>{item.description}</CardDescription>
-            <CardImage>{item.image}</CardImage>
+            <CardImage className="z-10">{item.image}</CardImage>
+            <GridPattern
+              width={20}
+              height={20}
+              x={-1}
+              y={-1}
+              className={cn(
+                "[mask-image:linear-gradient(to_top_left,white,transparent,transparent)] "
+              )}
+            />
           </Card>
         </Link>
       ))}
