@@ -57,7 +57,7 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       container: {
-        center: "true",
+        center: true,
         padding: {
           DEFAULT: "1rem",
           xs: "1.5rem",
