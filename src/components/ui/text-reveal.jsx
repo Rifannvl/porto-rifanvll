@@ -9,9 +9,9 @@ export const TextRevealByWord = ({ text, className }) => {
   const words = text.split(" ");
 
   return (
-    <div className="w-full container">
+    <div className="w-full ">
       <div ref={targetRef} className={cn("relative z-0 h-[115vh]", className)}>
-        <div className="sticky top-0 grid grid-flow-row h-[50%] max-w-screen items-start bg-transparent px-[1rem] py-[5rem]">
+        <div className="sticky top-0 grid grid-flow-row lg:h-[50%] h-96 max-w-screen items-start bg-transparent  lg:py-[5rem]">
           <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-start lg:text-5xl md:text-4xl text-2xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10">
             About me
           </span>
