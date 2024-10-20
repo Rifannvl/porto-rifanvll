@@ -1,12 +1,15 @@
 import { HoverEffect } from "@/components/ui/card-hover-effect";
 import { Target } from "lucide-react";
+import GradualSpacing from "./gradual-spacing";
 
 export function CardHover() {
   return (
     <div className="max-w-6xl mx-auto px-8">
-      <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300 bg-clip-text text-center text-6xl font-semibold leading-none text-transparent dark:from-white dark:to-black">
-        My Skill
-      </span>
+      <GradualSpacing
+        className="font-display mb-2 mt-5 lg:mb-4 text-xl sm:text-3xl font-bold -tracking-widest text-center text-neutral-700 dark:text-white md:text-3xl lg:text-5xl"
+        text="Project Rifan"
+        duration={0.75}
+      />
       <HoverEffect items={projects} />
     </div>
   );
