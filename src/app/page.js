@@ -17,9 +17,9 @@ export default function Home() {
 
       <BlurFade>
         <VelocityScroll
-          text={"web developer "}
+          text={"WEB DEVELOPER "}
           default_velocity={3}
-          className="font-display- text-center text-4xl font-bold tracking-[-0.02em] text-black drop-shadow-sm dark:text-white md:text-7xl md:leading-[4rem] "
+          className="font-display- max-w-full text-4xl font-bold tracking-[-0.02em] text-black drop-shadow-sm dark:text-white md:text-7xl md:leading-[4rem] "
         />
       </BlurFade>
       <div className="z-10 flex flex-col items-center justify-center bg-white dark:bg-black container p-6">
