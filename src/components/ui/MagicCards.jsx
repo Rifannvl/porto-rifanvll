@@ -3,7 +3,7 @@ import { MagicCard } from "@/components/ui/magic-card";
 export function MagicCardDemo() {
   return (
     <>
-      <div className="container mt-10 mb-52">
+      <div className=" mt-10 mb-52">
         <div className="mb-6">
           <h2 className="text-5xl font-bold text-neutral-700">Services</h2>
           <p>These services are what I can provide</p>
