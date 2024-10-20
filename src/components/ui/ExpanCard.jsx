@@ -106,7 +106,7 @@ export function ExpandableCard() {
                     exit={{ opacity: 0 }}
                     href={active.ctaLink}
                     target="_blank"
-                    className="px-4 py-3 text-sm rounded-full font-bold bg-green-500 text-white"
+                    className="px-4 py-3 text-sm rounded-full font-bold bg-neutral-800 text-white"
                   >
                     {active.ctaText}
                   </motion.a>
@@ -131,7 +131,7 @@ export function ExpandableCard() {
       </AnimatePresence>
       <div>
         <GradualSpacing
-          className="font-display mb-2 mt-5 lg:mb-4 text-xl sm:text-3xl font-bold -tracking-widest text-center text-black dark:text-white md:text-3xl lg:text-5xl"
+          className="font-display mb-2 mt-5 lg:mb-4 text-xl sm:text-3xl font-bold -tracking-widest text-center text-neutral-700 dark:text-white md:text-3xl lg:text-5xl"
           text="Project Rifan"
           duration={0.75}
         />
@@ -184,7 +184,7 @@ export function ExpandableCard() {
       <div className="flex justify-end">
         <button
           onClick={handleToggleShowMore}
-          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+          className="px-4 py-2 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200"
         >
           {showMore ? "Tutup Tabnya" : "Lihat Berikutnya"}
         </button>
