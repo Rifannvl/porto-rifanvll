@@ -28,7 +28,7 @@ export function BlurInText() {
             <br /> AFENDI
           </span>
         }
-        className="font-extrabold text-9xl text-black dark:text-white relative "
+        className="font-extrabold text-6xl md:text-7xl lg:text-9xl text-black dark:text-white relative "
       />
     </div>
   );
