@@ -1,10 +1,10 @@
+// pages/_app.js
 import { ThemeProvider } from "next-themes";
-import MagicCardDemo from "@/components/ui/MagicCards"; // Pastikan pathnya benar
+import "@/app/globals.css"; // Pastikan untuk menyesuaikan path ke file CSS global kamu
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ThemeProvider>
-      <MagicCardDemo /> {/* Pastikan ini ada di dalam ThemeProvider */}
+    <ThemeProvider attribute="class">
       <Component {...pageProps} />
     </ThemeProvider>
   );
