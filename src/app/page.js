@@ -9,6 +9,7 @@ import { ExpandableCard } from "@/components/ui/ExpanCard";
 import { CardHover } from "@/components/ui/CardHover";
 import { BlurInText } from "@/components/ui/BlurInText";
 import { MagicCardDemo } from "@/components/ui/MagicCards";
+import Certification from "@/components/ui/Certification";
 
 export default function Home() {
   return (
@@ -42,6 +43,7 @@ export default function Home() {
       <DockMenus className="fixed bottom-12 left-1/2 -translate-x-1/2 z-50" />
       <ExpandableCard />
       <MagicCardDemo />
+      <Certification />
       <GridPattern
         width={20}
         height={20}
