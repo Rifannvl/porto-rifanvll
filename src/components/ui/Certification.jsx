@@ -17,7 +17,10 @@ export default function Certification() {
         <p>Certification I have obtained </p>
       </div>
       <div className="flex h-[500px] w-full flex-col gap-4 lg:h-[250px] lg:flex-row">
-        <a href="https://credsverse.com/credentials/7ef5499b-5be2-4087-aa0e-c43f90fc4067?preview=1">
+        <a
+          href="https://credsverse.com/credentials/7ef5499b-5be2-4087-aa0e-c43f90fc4067?preview=1"
+          target="_blank"
+        >
           <Card className="flex-col items-center justify-center text-xl px-10 pb-6 text-center gap-3">
             <img
               src="https://img.icons8.com/?size=100&id=103650&format=png&color=000000"
