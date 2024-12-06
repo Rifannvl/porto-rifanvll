@@ -30,7 +30,7 @@ export const TextRevealByWord = ({ text, className }) => {
             })}
           </p>
           <a
-            href="/path/to/your/resume.pdf" // Ganti dengan path ke file resume kamu
+            href="https://drive.google.com/file/d/1_86WZ-EncHi5UwKeJPb05vjtx5F5uUj0/view?usp=sharing" // Ganti dengan path ke file resume kamu
             download
             className="mt-6 inline-block  max-w-52 px-4 py-2 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200"
           >
