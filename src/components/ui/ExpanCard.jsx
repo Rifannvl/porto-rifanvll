@@ -257,16 +257,12 @@ export const CloseIcon = () => {
 // Sample Data for Cards (Proyek Dummy dan Real)
 const cards = [
   {
-    description: "01-10-2024",
+    description: "01-01-2025",
     title: "Masjid Jami Pesantren Gratis Klaten",
     src: masjid,
     ctaText: "Visit",
     ctaLink: "https://masjidjamipesantrengratis.or.id",
-    content: () => (
-      <p>
-        Masjid Jami Pesantren Gratis Klaten sebagai tugas akhir di neuversity
-      </p>
-    ),
+    content: () => <p>Masjid Jami Pesantren Gratis Klaten</p>,
     type: "real", // Project Real
   },
 
