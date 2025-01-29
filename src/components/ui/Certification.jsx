@@ -23,11 +23,14 @@ export default function Certification() {
           target="_blank"
         >
           <Card className="flex-col items-center justify-center text-xl px-10 pb-6 text-center gap-3">
-            <Image
-              src="https://img.icons8.com/?size=100&id=103650&format=png&color=000000"
-              alt="Website Development Icon"
-              className="mx-auto w-20" // Sesuaikan ukuran sesuai kebutuhan
-            />
+            <div>
+              <Image
+                src="https://img.icons8.com/?size=100&id=103650&format=png&color=000000"
+                alt="Icon"
+                width={100}
+                height={100}
+              />
+            </div>
             <p className="text-2xl text-neutral-800 mx-auto  text-start">
               Frontend Development
             </p>
