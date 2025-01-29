@@ -6,6 +6,7 @@ import React, {
   useContext,
   useRef,
   useEffect,
+  useCallback, // Mengimpor useCallback
 } from "react";
 
 const MouseEnterContext = createContext(undefined);
@@ -33,6 +34,7 @@ export const CardContainer = ({ children, className, containerClassName }) => {
     setIsMouseEntered(false);
     containerRef.current.style.transform = `rotateY(0deg) rotateX(0deg)`;
   };
+
   return (
     <MouseEnterContext.Provider value={[isMouseEntered, setIsMouseEntered]}>
       <div
@@ -40,9 +42,7 @@ export const CardContainer = ({ children, className, containerClassName }) => {
           "py-10 flex items-center justify-center",
           containerClassName
         )}
-        style={{
-          perspective: "1000px",
-        }}
+        style={{ perspective: "1000px" }}
       >
         <div
           ref={containerRef}
@@ -53,9 +53,7 @@ export const CardContainer = ({ children, className, containerClassName }) => {
             "flex items-center justify-center relative transition-all duration-200 ease-linear",
             className
           )}
-          style={{
-            transformStyle: "preserve-3d",
-          }}
+          style={{ transformStyle: "preserve-3d" }}
         >
           {children}
         </div>
@@ -92,18 +90,27 @@ export const CardItem = ({
   const ref = useRef(null);
   const [isMouseEntered] = useMouseEnter();
 
-  useEffect(() => {
-    handleAnimations();
-  }, [isMouseEntered]);
-
-  const handleAnimations = () => {
+  // Membungkus handleAnimations dengan useCallback
+  const handleAnimations = useCallback(() => {
     if (!ref.current) return;
     if (isMouseEntered) {
       ref.current.style.transform = `translateX(${translateX}px) translateY(${translateY}px) translateZ(${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`;
     } else {
       ref.current.style.transform = `translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)`;
     }
-  };
+  }, [
+    isMouseEntered,
+    translateX,
+    translateY,
+    translateZ,
+    rotateX,
+    rotateY,
+    rotateZ,
+  ]); // Menambahkan dependensi yang relevan
+
+  useEffect(() => {
+    handleAnimations();
+  }, [handleAnimations]); // Menggunakan handleAnimations yang sudah dibungkus dengan useCallback
 
   return (
     <Tag
