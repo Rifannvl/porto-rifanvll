@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 export default function Certification() {
   function Card({ children, className }) {
@@ -22,7 +23,7 @@ export default function Certification() {
           target="_blank"
         >
           <Card className="flex-col items-center justify-center text-xl px-10 pb-6 text-center gap-3">
-            <img
+            <Image
               src="https://img.icons8.com/?size=100&id=103650&format=png&color=000000"
               alt="Website Development Icon"
               className="mx-auto w-20" // Sesuaikan ukuran sesuai kebutuhan
@@ -32,7 +33,7 @@ export default function Certification() {
             </p>
             <p className="text-xs mx-auto max-w-80 text-start">
               The Frontend Development program at Neuversity teaches students
-              how to build interactive and responsive web applications. You'll
+              how to build interactive and responsive web applications. You will
               learn key technologies like HTML, CSS, JavaScript, and modern
               frameworks such as React and Svelte. The program includes
               practical experience to help you design user-friendly interfaces
