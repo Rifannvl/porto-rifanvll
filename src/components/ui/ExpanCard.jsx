@@ -4,6 +4,7 @@ import Ecmrs from "@/assets/ecmrs.png";
 import Travel from "@/assets/travel.png";
 import Smk from "@/assets/smk.png";
 import Yws from "@/assets/yws.png";
+import masjid from "@/assets/masjid.png";
 import GradualSpacing from "./gradual-spacing";
 import BlurFade from "./blur-fade";
 import React, { useEffect, useId, useRef, useState } from "react";
@@ -14,6 +15,7 @@ export function ExpandableCard() {
   const [active, setActive] = useState(null);
   const [visibleCount, setVisibleCount] = useState(3); // Jumlah kartu awal
   const [showMore, setShowMore] = useState(false); // State untuk menampilkan kartu tambahan
+  const [filter, setFilter] = useState("all"); // Filter untuk kategori proyek
   const id = useId();
   const ref = useRef(null);
 
@@ -40,8 +42,48 @@ export function ExpandableCard() {
     setShowMore((prev) => !prev); // Toggle state untuk menampilkan kartu tambahan
   };
 
+  // Fungsi untuk menyaring kartu berdasarkan filter
+  const filteredCards = cards.filter((card) => {
+    if (filter === "all") return true;
+    return card.type === filter;
+  });
+
   return (
     <div className="">
+      <div className="flex justify-start mt-5 mb-5">
+        {/* Filter Button */}
+        <button
+          onClick={() => setFilter("all")}
+          className={`px-4 py-2 mr-2 rounded-md ${
+            filter === "all"
+              ? "bg-neutral-800 text-white"
+              : "bg-white text-black"
+          }`}
+        >
+          Semua Proyek
+        </button>
+        <button
+          onClick={() => setFilter("real")}
+          className={`px-4 py-2 mr-2 rounded-md ${
+            filter === "real"
+              ? "bg-neutral-800 text-white"
+              : "bg-white text-black"
+          }`}
+        >
+          Proyek Nyata
+        </button>
+        <button
+          onClick={() => setFilter("dummy")}
+          className={`px-4 py-2 rounded-md ${
+            filter === "dummy"
+              ? "bg-neutral-800 text-white"
+              : "bg-white text-black"
+          }`}
+        >
+          Proyek Dummy
+        </button>
+      </div>
+
       <AnimatePresence>
         {active && typeof active === "object" && (
           <motion.div
@@ -144,8 +186,8 @@ export function ExpandableCard() {
         </ul>
       </div>
       <ul className="max-w-8xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-start gap-4">
-        {cards
-          .slice(0, showMore ? cards.length : visibleCount)
+        {filteredCards
+          .slice(0, showMore ? filteredCards.length : visibleCount)
           .map((card, index) => (
             <motion.div
               layoutId={`card-${card.title}-${id}`}
@@ -198,26 +240,36 @@ export const CloseIcon = () => {
     <motion.svg
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0, transition: { duration: 0.05 } }}
+      exit={{ opacity: 0 }}
       xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
+      viewBox="0 0 12 12"
       fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="h-4 w-4 text-black"
+      className="w-4 h-4"
     >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M18 6l-12 12" />
-      <path d="M6 6l12 12" />
+      <motion.path
+        fill="currentColor"
+        d="M10.707 1.293a1 1 0 0 0-1.414 0L6 4.586 2.707 1.293A1 1 0 1 0 1.293 2.707L4.586 6 1.293 9.293a1 1 0 0 0 1.414 1.414L6 7.414l3.293 3.293a1 1 0 1 0 1.414-1.414L7.414 6l3.293-3.293a1 1 0 0 0 0-1.414z"
+      />
     </motion.svg>
   );
 };
 
+// Sample Data for Cards (Proyek Dummy dan Real)
 const cards = [
+  {
+    description: "01-10-2024",
+    title: "Masjid Jami Pesantren Gratis Klaten",
+    src: masjid,
+    ctaText: "Visit",
+    ctaLink: "https://masjidjamipesantrengratis.or.id",
+    content: () => (
+      <p>
+        Masjid Jami Pesantren Gratis Klaten sebagai tugas akhir di neuversity
+      </p>
+    ),
+    type: "real", // Project Real
+  },
+
   {
     description: "01-08-2024",
     title: "Ecommerce (project mandiri)",
@@ -227,6 +279,7 @@ const cards = [
     content: () => (
       <p>Ecommerce app project mandiri sebagai tugas akhir di neuversity</p>
     ),
+    type: "dummy", // Project dummy
   },
   {
     description: "01-09-2024",
@@ -235,6 +288,7 @@ const cards = [
     ctaText: "Visit",
     ctaLink: "https://web-travel-nine.vercel.app",
     content: () => <p>Membuat web travel sebagai tugas akhir di neuversity</p>,
+    type: "dummy", // Project Dummy
   },
   {
     description: "01-04-2024",
@@ -243,6 +297,7 @@ const cards = [
     ctaText: "Visit",
     ctaLink: "https://smkn1-simpangraya.vercel.app",
     content: () => <p>Membuat web SMK Negeri 1 Simpang Raya</p>,
+    type: "dummy", // Project Dummy
   },
   {
     description: "01-06-2024",
@@ -251,5 +306,6 @@ const cards = [
     ctaText: "Visit",
     ctaLink: "https://yowis-coffe.vercel.app",
     content: () => <p>Membuat web untuk cafe Yowis Coffee</p>,
+    type: "dummy", // Project Dummy
   },
 ];
