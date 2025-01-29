@@ -43,7 +43,8 @@ export default function Home() {
       <DockMenus className="fixed bottom-12 left-1/2 -translate-x-1/2 z-50" />
       <ExpandableCard />
       <MagicCardDemo />
-    
+      <Certification />
+
       <GridPattern
         width={20}
         height={20}
