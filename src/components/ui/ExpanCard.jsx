@@ -1,10 +1,13 @@
 "use client";
 import Image from "next/image";
+// import image
 import Ecmrs from "@/assets/ecmrs.png";
 import Travel from "@/assets/travel.png";
 import Smk from "@/assets/smk.png";
 import Yws from "@/assets/yws.png";
 import masjid from "@/assets/masjid.png";
+import Ecmrs2 from "@/assets/ecmrs2.png";
+
 import GradualSpacing from "./gradual-spacing";
 import BlurFade from "./blur-fade";
 import React, { useEffect, useId, useRef, useState } from "react";
@@ -264,6 +267,27 @@ const cards = [
     ctaLink: "https://masjidjamipesantrengratis.or.id",
     content: () => <p>Masjid Jami Pesantren Gratis Klaten</p>,
     type: "real", // Project Real
+  },
+
+  // untuk project dummy
+  {
+    description: "01-01-2025",
+    title: "Ecommerce v2",
+    src: Ecmrs2,
+    ctaText: "Visit",
+    ctaLink: "https://ecommercev2-gray.vercel.app/",
+    content: () => (
+      <p>
+        Ecommerce app
+        <br />
+        <span>
+          username : emilys
+          <br />
+          password : emilyspass
+        </span>
+      </p>
+    ),
+    type: "dummy", // Project Dummy
   },
 
   {
